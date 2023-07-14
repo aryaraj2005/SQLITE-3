@@ -1,0 +1,51 @@
+Create table Deparment1(
+id int primary key , 
+name varchar(230),
+role varchar(230)
+);
+
+ insert into Deparment1 values
+  (001 , 'A', 'android dev'),
+  (002 , 'B' , 'manager'),
+  (003 , 'C', 'saleman'),
+  (004 , 'D','android dev'),
+    (005 , 'E', 'mmanager'),
+  (006  , 'I' ,'saleman');
+   
+  select " --------departemnt 1--------";
+   select*from Deparment1;
+   
+   
+  Create table Deparment2(
+  id int primary key , 
+  name varchar(230),
+  role varchar(230)
+);
+ insert into Deparment2 values
+ (003 , 'C', 'saleman'),
+  (005 , 'E', 'mmanager');
+  (008 , 'E','android dev'),
+  (007 , 'F', 'marketing'); 
+  
+  select " Deparment2--------";
+  select*from Deparment2;    
+      
+ -----list all the employee in comp--------     
+  -----by using union---------    
+   select " Q@@@@-----list all the employee in company C work in both dep1 & 2--------   ????? ";   
+   select * from Deparment1 union select * from Deparment2;
+      
+      
+      -----list all the employee in comp works as saleman-------
+      ------by using union ------
+ select " Q@@@@----list all the employee in comp works as saleman- ";
+   select * from Deparment1 where role = 'saleman' union select *from Deparment2 where role = 'saleman';
+  
+  -----list out all the employee who work in all department -------    
+ select "----list out all the employee who work in all department -------"; 
+ ----- by using intersection ------------
+select Deparment1.* from Deparment1 inner join Deparment2 using(id);
+
+ -----list out all the employee who work in dep1 but not in dapartment2 -------
+select " -----list out all the employee who work in dep1 but not in dapartment2 ------";
+select Deparment1.* from Deparment1 left join Deparment2 using(id) where Deparment2.id is null ;
